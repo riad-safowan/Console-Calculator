@@ -9,12 +9,14 @@ public class Graph {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        ArrayList<Point> points = new ArrayList<>();
         float m, c;
         boolean isDone = false;
         while (!isDone) {
             System.out.println("1 -> y=mx+c");
             System.out.println("2 -> y=mx^2+c");
             System.out.println("3 -> y=x^3");
+            System.out.println("0 -> Close application");
 
             System.out.print("Select: ");
 
@@ -24,7 +26,7 @@ public class Graph {
                     m = scanner.nextFloat();
                     System.out.print("Enter c: ");
                     c = scanner.nextFloat();
-                    ArrayList<Point> points = new ArrayList<>();
+                    points.clear();
                     for (int i = -X / 2; i < X / 2; i++) {
                         points.add(new Point(i, (int) (m * i + c)));
                     }
@@ -36,7 +38,7 @@ public class Graph {
                     m = scanner.nextFloat();
                     System.out.print("Enter c: ");
                     c = scanner.nextFloat();
-                    ArrayList<Point> points = new ArrayList<>();
+                    points.clear();
                     for (int i = -X / 2; i < X / 2; i++) {
                         points.add(new Point(i, (int) (m * i * i + c)));
                     }
@@ -48,7 +50,7 @@ public class Graph {
                     m = scanner.nextFloat();
                     System.out.print("Enter c: ");
                     c = scanner.nextFloat();
-                    ArrayList<Point> points = new ArrayList<>();
+                    points.clear();
                     for (int i = -X / 2; i < X / 2; i++) {
                         points.add(new Point(i, (int) (m * i * i * i + c)));
                     }
@@ -72,8 +74,8 @@ public class Graph {
                 x = j - Y / 2;
                 y = X / 2 - i;
                 for (int p = 0; p < points.size(); p++) {
-                    if (points.get(p).getX() == x) {
-                        if (points.get(p).getY() == y) {
+                    if (points.get(p).x == x) {
+                        if (points.get(p).y == y) {
                             isPoint = true;
                         }
                     }
@@ -103,20 +105,12 @@ public class Graph {
 }
 
 class Point {
-    private int x;
-    private int y;
+    int x;
+    int y;
 
     public Point(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
     }
 }
 

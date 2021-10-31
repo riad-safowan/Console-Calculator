@@ -10,12 +10,12 @@ public class Graph {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Point> points = new ArrayList<>();
-        float m, c;
+        float m, a, b;
         boolean isDone = false;
         while (!isDone) {
-            System.out.println("1 -> y=mx+c");
-            System.out.println("2 -> y=mx^2+c");
-            System.out.println("3 -> y=x^3");
+            System.out.println("1 -> y=mx+b");
+            System.out.println("2 -> y=m(x+a)^2+b");
+            System.out.println("3 -> y=m(x+a)^3+b");
             System.out.println("0 -> Close application");
 
             System.out.print("Select: ");
@@ -24,11 +24,11 @@ public class Graph {
                 case 1: {
                     System.out.print("Enter m: ");
                     m = scanner.nextFloat();
-                    System.out.print("Enter c: ");
-                    c = scanner.nextFloat();
+                    System.out.print("Enter b: ");
+                    b = scanner.nextFloat();
                     points.clear();
                     for (int i = -X / 2; i < X / 2; i++) {
-                        points.add(new Point(i, (int) (m * i + c)));
+                        points.add(new Point(i, (int) (m * i + b)));
                     }
                     drawArray(points);
                     break;
@@ -36,11 +36,13 @@ public class Graph {
                 case 2: {
                     System.out.print("Enter m: ");
                     m = scanner.nextFloat();
-                    System.out.print("Enter c: ");
-                    c = scanner.nextFloat();
+                    System.out.print("Enter a: ");
+                    a = scanner.nextFloat();
+                    System.out.print("Enter b: ");
+                    b = scanner.nextFloat();
                     points.clear();
                     for (int i = -X / 2; i < X / 2; i++) {
-                        points.add(new Point(i, (int) (m * i * i + c)));
+                        points.add(new Point(i, (int) (m * Math.pow(i + a, 2) + b)));
                     }
                     drawArray(points);
                     break;
@@ -48,11 +50,13 @@ public class Graph {
                 case 3: {
                     System.out.print("Enter m: ");
                     m = scanner.nextFloat();
-                    System.out.print("Enter c: ");
-                    c = scanner.nextFloat();
+                    System.out.print("Enter a: ");
+                    a = scanner.nextFloat();
+                    System.out.print("Enter b: ");
+                    b = scanner.nextFloat();
                     points.clear();
                     for (int i = -X / 2; i < X / 2; i++) {
-                        points.add(new Point(i, (int) (m * i * i * i + c)));
+                        points.add(new Point(i, (int) (m * Math.pow(i + a, 3) + b)));
                     }
                     drawArray(points);
                     break;

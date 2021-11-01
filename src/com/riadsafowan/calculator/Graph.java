@@ -20,6 +20,9 @@ public class Graph {
             System.out.println("3 -> y=m(x+a)^3+b");
             System.out.println("4 -> y=+-(r^2-x^2)^.5");
             System.out.println("5 -> y=sin(x)");
+            System.out.println("6 -> y=cos(x)");
+            System.out.println("7 -> y=tan(x)");
+            System.out.println("8 -> y=e^x");
             System.out.println("0 -> Close application");
 
             System.out.print("Select: ");
@@ -119,7 +122,52 @@ public class Graph {
                         }
                     }
                     for (int i = -X / 2; i < X / 2; i++) {
-                        points.add(new Point(i, (int) (10 * Math.sin(25 * i * 180 / Math.PI))));
+                        points.add(new Point(i, (int) (10 * Math.sin(i * .3))));
+                    }
+                    hasGraph = true;
+                    drawArray(points);
+                    break;
+                }
+                case 6: {
+                    if (hasGraph) {
+                        System.out.print("Do you want to keep the old graph? y/n : ");
+                        ch = scanner.next().charAt(0);
+                        if (ch == 'n' || ch == 'N') {
+                            points.clear();
+                        }
+                    }
+                    for (int i = -X / 2; i < X / 2; i++) {
+                        points.add(new Point(i, (int) (10 * Math.cos(i * .3))));
+                    }
+                    hasGraph = true;
+                    drawArray(points);
+                    break;
+                }
+                case 7: {
+                    if (hasGraph) {
+                        System.out.print("Do you want to keep the old graph? y/n : ");
+                        ch = scanner.next().charAt(0);
+                        if (ch == 'n' || ch == 'N') {
+                            points.clear();
+                        }
+                    }
+                    for (int i = -X / 2; i < X / 2; i++) {
+                        points.add(new Point(i, (int) (10 * Math.tan(i * .3))));
+                    }
+                    hasGraph = true;
+                    drawArray(points);
+                    break;
+                }
+                case 8: {
+                    if (hasGraph) {
+                        System.out.print("Do you want to keep the old graph? y/n : ");
+                        ch = scanner.next().charAt(0);
+                        if (ch == 'n' || ch == 'N') {
+                            points.clear();
+                        }
+                    }
+                    for (int i = -X / 2; i < X / 2; i++) {
+                        points.add(new Point(i, (int) Math.ceil(10 * Math.exp(i * .1))));
                     }
                     hasGraph = true;
                     drawArray(points);

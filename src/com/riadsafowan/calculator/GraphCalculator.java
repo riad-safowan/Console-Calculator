@@ -3,7 +3,7 @@ package com.riadsafowan.calculator;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Graph {
+public class GraphCalculator {
     private static final int X = 100; //size of graph
     private static final int Y = 100;
 
@@ -23,6 +23,7 @@ public class Graph {
             System.out.println("6 -> y=cos(x)");
             System.out.println("7 -> y=tan(x)");
             System.out.println("8 -> y=e^x");
+            System.out.println("9 -> Draw Differential curve");
             System.out.println("0 -> Close application");
 
             System.out.print("Select: ");
@@ -43,6 +44,7 @@ public class Graph {
                     for (int i = -X / 2; i < X / 2; i++) {
                         points.add(new Point(i, (int) (m * i + b)));
                     }
+
                     hasGraph = true;
                     drawArray(points);
                     break;
@@ -173,6 +175,12 @@ public class Graph {
                     drawArray(points);
                     break;
                 }
+                case 9: {
+                    drawDifferentialCurve(points);
+                    points.clear();
+                    hasGraph = false;
+                    break;
+                }
                 case 0: {
                     isDone = true;
                 }
@@ -217,6 +225,17 @@ public class Graph {
             }
             System.out.println();
         }
+    }
+
+    private static void drawDifferentialCurve(ArrayList<Point> points) {
+        int size = points.size();
+        int y;
+        for (int i = 1; i < size - 1; i++) {
+            y = ((points.get(i).y - points.get(i - 1).y) / (points.get(i).x - points.get(i - 1).x) +
+                    (points.get(i + 1).y - points.get(i).y) / (points.get(i + 1).x - points.get(i).x)) / 2;
+            points.add(new Point(points.get(i).x, y));
+        }
+        drawArray(points);
     }
 }
 

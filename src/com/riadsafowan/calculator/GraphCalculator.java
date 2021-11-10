@@ -29,7 +29,7 @@ public class GraphCalculator {
             System.out.print("Select: ");
 
             switch (scanner.nextInt()) {
-                case 1: {
+                case 1 -> {
                     System.out.print("Enter m: ");
                     m = scanner.nextFloat();
                     System.out.print("Enter b: ");
@@ -47,9 +47,8 @@ public class GraphCalculator {
 
                     hasGraph = true;
                     drawArray(points);
-                    break;
                 }
-                case 2: {
+                case 2 -> {
                     System.out.print("Enter m: ");
                     m = scanner.nextFloat();
                     System.out.print("Enter a: ");
@@ -68,9 +67,8 @@ public class GraphCalculator {
                     }
                     hasGraph = true;
                     drawArray(points);
-                    break;
                 }
-                case 3: {
+                case 3 -> {
                     System.out.print("Enter m: ");
                     m = scanner.nextFloat();
                     System.out.print("Enter a: ");
@@ -89,9 +87,8 @@ public class GraphCalculator {
                     }
                     hasGraph = true;
                     drawArray(points);
-                    break;
                 }
-                case 4: {
+                case 4 -> {
                     System.out.print("Enter r: ");
                     r = scanner.nextFloat();
                     System.out.print("Enter a: ");
@@ -113,9 +110,8 @@ public class GraphCalculator {
                     }
                     hasGraph = true;
                     drawArray(points);
-                    break;
                 }
-                case 5: {
+                case 5 -> {
                     if (hasGraph) {
                         System.out.print("Do you want to keep the old graph? y/n : ");
                         ch = scanner.next().charAt(0);
@@ -128,9 +124,8 @@ public class GraphCalculator {
                     }
                     hasGraph = true;
                     drawArray(points);
-                    break;
                 }
-                case 6: {
+                case 6 -> {
                     if (hasGraph) {
                         System.out.print("Do you want to keep the old graph? y/n : ");
                         ch = scanner.next().charAt(0);
@@ -143,9 +138,8 @@ public class GraphCalculator {
                     }
                     hasGraph = true;
                     drawArray(points);
-                    break;
                 }
-                case 7: {
+                case 7 -> {
                     if (hasGraph) {
                         System.out.print("Do you want to keep the old graph? y/n : ");
                         ch = scanner.next().charAt(0);
@@ -158,9 +152,8 @@ public class GraphCalculator {
                     }
                     hasGraph = true;
                     drawArray(points);
-                    break;
                 }
-                case 8: {
+                case 8 -> {
                     if (hasGraph) {
                         System.out.print("Do you want to keep the old graph? y/n : ");
                         ch = scanner.next().charAt(0);
@@ -173,15 +166,13 @@ public class GraphCalculator {
                     }
                     hasGraph = true;
                     drawArray(points);
-                    break;
                 }
-                case 9: {
+                case 9 -> {
                     drawDifferentialCurve(points);
                     points.clear();
                     hasGraph = false;
-                    break;
                 }
-                case 0: {
+                case 0 -> {
                     isDone = true;
                 }
             }

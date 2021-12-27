@@ -1,11 +1,13 @@
 package com.riadsafowan.calculator;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GraphCalculator {
-    private static final int X = 100; //size of graph
-    private static final int Y = 100;
+    private static final int X = 200; //length of x-axis
+    private static final int Y = 100; //length of y-axis
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -183,11 +185,13 @@ public class GraphCalculator {
     private static void drawArray(ArrayList<Point> points) {
         int x;
         int y;
+        String buffer = " ";
+        StringBuilder graph = new StringBuilder();
         boolean isPoint = false;
         for (int i = 0; i < Y; i++) {
             for (int j = 0; j < X; j++) {
-                x = j - Y / 2;
-                y = X / 2 - i;
+                x = j - X / 2;
+                y = Y / 2 - i;
                 for (Point point : points) {
                     if (point.x == x) {
                         if (point.y == y) {
@@ -196,25 +200,35 @@ public class GraphCalculator {
                     }
                 }
                 if (isPoint) {
-                    System.out.print("$  ");
+                    graph.append("$").append(buffer);
                     isPoint = false;
                 } else if (i == Y / 2 && j == X / 2) {
-                    System.out.print("0  ");
+                    graph.append("0").append(buffer);
                 } else if (j == X / 2 || i == Y / 2) {
                     if (j % 10 == 0 && j != X / 2) {
-                        System.out.print("|  ");
+                        graph.append("|").append(buffer);
                     } else {
                         if (i % 10 == 0 && i != Y / 2) {
-                            System.out.print("@  ");
+                            graph.append("|").append(buffer);
                         } else {
-                            System.out.print("*  ");
+                            graph.append("*").append(buffer);
                         }
                     }
                 } else {
-                    System.out.print("   ");
+                    graph.append(" ").append(buffer);
                 }
             }
-            System.out.println();
+            graph.append("\n");
+        }
+        System.out.println(graph);
+        try {
+            FileWriter myWriter = new FileWriter("graph_board.txt");
+            myWriter.write(String.valueOf(graph));
+            myWriter.close();
+            System.out.println("Successfully wrote to the file.");
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
         }
     }
 

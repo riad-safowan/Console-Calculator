@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GraphCalculator {
-    private static final int X = 200; //length of x-axis
-    private static final int Y = 100; //length of y-axis
+    private static final int X = 300; //length of x-axis
+    private static final int Y = 180; //length of y-axis
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -122,7 +122,7 @@ public class GraphCalculator {
                         }
                     }
                     for (int i = -X / 2; i < X / 2; i++) {
-                        points.add(new Point(i, (int) (10 * Math.sin(i * .3))));
+                        points.add(new Point(i, (int) (10*Math.sin(i/10.0))));
                     }
                     hasGraph = true;
                     drawArray(points);
